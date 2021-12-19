@@ -46,7 +46,6 @@ bool SerialPort::get_Mode(int &mode, int &sentry_mode, int &base_mode)
 
     if (bytes == 0)
     {
-//        cout << "缓冲区为空" << endl;
         return true;
     }
 
@@ -114,7 +113,7 @@ void SerialPort::set_Brate()
 			tcflush(fd, TCIOFLUSH);//清空缓冲区的内容
 			cfsetispeed(&Opt, speed_arr[i]);//设置接受和发送的波特率
 			cfsetospeed(&Opt, speed_arr[i]);
-            status = tcsetattr(fd, TCSANOW, &Opt); //使设置立即生效
+                        status = tcsetattr(fd, TCSANOW, &Opt); //使设置立即生效
 
 			if (status != 0)
 			{
