@@ -12,23 +12,21 @@
 SerialPort::SerialPort()
 {
 
-	fd = open(UART_DEVICE, O_RDWR | O_NOCTTY | O_NDELAY);
-
+    fd = open(UART_DEVICE, O_RDWR | O_NOCTTY | O_NDELAY);
     speed = BAUDRATE;
     databits = 8;
     stopbits = 1;
-	parity = 'N';
+    parity = 'N';
 }
 
 SerialPort::SerialPort(char *portpath)
 {
 
-	fd = open(portpath, O_RDWR | O_NOCTTY | O_NDELAY);
-
+    fd = open(portpath, O_RDWR | O_NOCTTY | O_NDELAY);
     speed = BAUDRATE;
     databits = 8;
     stopbits = 1;
-	parity = 'N';
+    parity = 'N';
 }
 
 ////////////////////////////////////////////////////////////////
@@ -75,20 +73,20 @@ bool SerialPort::get_Mode(int &mode, int &sentry_mode, int &base_mode)
 bool SerialPort::initSerialPort()
 {
 
-	if (fd == -1)
-	{
-        perror(UART_DEVICE);
-        return false;
-    }
+   if (fd == -1)
+  {
+    perror(UART_DEVICE);
+    return false;
+  }
 
-	std::cout << "Opening..." << std::endl;
-    set_Brate();
+   std::cout << "Opening..." << std::endl;
+   set_Brate();
 
-	if (set_Bit() == FALSE)
-	{
-        printf("Set Parity Error\n");
-		exit(0);
-    }
+   if (set_Bit() == FALSE)
+  {
+    printf("Set Parity Error\n");
+	exit(0);
+  }
     printf("Open successed\n");
     return true;
 }
@@ -120,14 +118,14 @@ void SerialPort::set_Brate()
 
 			if (status != 0)
 			{
-                perror("tcsetattr fd1");
-                return;
-            }
+                         perror("tcsetattr fd1");
+                         return;
+                        }
 
 			tcflush(fd, TCIOFLUSH);
 
+                }
         }
-    }
 }
 
 /**
@@ -141,7 +139,7 @@ int SerialPort::set_Bit()
 	{
         perror("SetupSerial 1");
 		return (FALSE);
-    }
+        }
 
     termios_p.c_cflag |= (CLOCAL | CREAD);  //接受数据
 	termios_p.c_cflag &= ~CSIZE;//设置数据位数
