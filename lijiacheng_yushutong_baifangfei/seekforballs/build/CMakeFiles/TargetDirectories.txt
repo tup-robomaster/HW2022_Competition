@@ -1,0 +1,3 @@
+/home/kwb/Desktop/jj/seekforballs/build/CMakeFiles/rebuild_cache.dir
+/home/kwb/Desktop/jj/seekforballs/build/CMakeFiles/edit_cache.dir
+/home/kwb/Desktop/jj/seekforballs/build/CMakeFiles/seekballs.dir
